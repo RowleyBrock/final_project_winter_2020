@@ -14,7 +14,7 @@ library(here)
 library(janitor)
 library(maps)
 library(mapdata)
-
+library(ggtext)
 ```
 
 ```{r loading the data}
@@ -204,13 +204,13 @@ join2 %>%
   ggplot(aes(county, Score, color = Year)) +
   geom_point() +
   coord_flip() + 
-  geom_line(aes(group = county), color = "gray40", size = 1)+
+  geom_line(aes(group = county), color = "gray40", size = 1) +
+  theme(
+    plot.title.position = "plot",
+    plot.subtitle = element_markdown()) +
   labs(title = "Self Regulation Score Changes from 2013 to 2018",
-       subtitle = "XXX color denotes increase, YYY color denotes decrease",
+       subtitle = "<span style = 'color:#FF6C67;'>2013</span> comparied to <span style = 'color:#00C2C6;'>2018 </span>change.",
        x = NULL,
        y = "Score (on 1-5 scale)")
-
-# 
-
 ```
 
